@@ -53,16 +53,86 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Form submission
+  // Get the form and modal elements
   const enquiryForm = document.getElementById("enquiryForm");
+  const statusModal = document.getElementById("statusModal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalMessage = document.getElementById("modalMessage");
+  const closeBtn = statusModal.querySelector(".close-btn");
 
+  // Function to show the modal with custom content
+  function showStatusModal(isSuccess) {
+    if (isSuccess) {
+      modalTitle.textContent = "Success! 🎉";
+      modalMessage.textContent =
+        "Thank you for your enquiry! We have received your message and will get back to you shortly.";
+      statusModal.querySelector(".modal-content").classList.remove("error");
+      statusModal.querySelector(".modal-content").classList.add("success");
+    } else {
+      modalTitle.textContent = "Error! 😔";
+      modalMessage.textContent =
+        "Oops! Something went wrong while submitting your form. Please try again or contact us directly.";
+      statusModal.querySelector(".modal-content").classList.remove("success");
+      statusModal.querySelector(".modal-content").classList.add("error");
+    }
+
+    statusModal.style.display = "flex";
+    setTimeout(() => statusModal.classList.add("show"), 10);
+
+    // Auto-hide the modal after 5 seconds
+    setTimeout(() => {
+      hideStatusModal();
+    }, 5000);
+  }
+
+  // Function to hide the modal
+  function hideStatusModal() {
+    statusModal.classList.remove("show");
+    setTimeout(() => (statusModal.style.display = "none"), 300);
+  }
+
+  // Event listeners for closing the modal
+  closeBtn.onclick = function () {
+    hideStatusModal();
+  };
+
+  window.onclick = function (event) {
+    if (event.target === statusModal) {
+      hideStatusModal();
+    }
+  };
+
+  // Handle form submission
   if (enquiryForm) {
     enquiryForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      // Here you would typically send the form data to a server
-      // For now, we'll just show an alert
-      alert("Thank you for your enquiry! We will get back to you soon.");
-      this.reset();
+      // Get the form data
+      const formData = new FormData(enquiryForm);
+
+      // Netlify requires the form name in the data
+      const data = new URLSearchParams(formData);
+
+      // Show a temporary loading state if needed (optional)
+      // For now, we'll proceed directly to submission
+
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: data,
+      })
+        .then((response) => {
+          if (response.ok) {
+            showStatusModal(true); // Show success modal
+            enquiryForm.reset();
+          } else {
+            showStatusModal(false); // Show error modal
+          }
+        })
+        .catch((error) => {
+          console.error("Form submission error:", error);
+          showStatusModal(false); // Show error modal on network failure
+        });
     });
   }
 
@@ -144,4 +214,54 @@ document.querySelectorAll(".project-slider").forEach((slider) => {
   slider.addEventListener("mouseleave", () => {
     slideInterval = setInterval(nextSlide, 5000);
   });
+});
+
+// Pop up model for project section
+// Get the modal
+const modal = document.getElementById("demoModal");
+const contactBtn = modal.querySelector(".modal-contact-btn");
+
+// Get all "View Demo" buttons
+const demoButtons = document.querySelectorAll(
+  '.projects-grid a.project-link[href="#"]'
+);
+
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName("close-btn")[0];
+
+// Function to show the modal
+function showModal() {
+  modal.style.display = "flex";
+  setTimeout(() => modal.classList.add("show"), 10);
+}
+
+// Function to hide the modal
+function hideModal() {
+  modal.classList.remove("show");
+  setTimeout(() => (modal.style.display = "none"), 300);
+}
+
+// When the user clicks on a button with href="#", open the modal
+demoButtons.forEach((button) => {
+  button.addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent the default anchor behavior
+    showModal();
+  });
+});
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  hideModal();
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    hideModal();
+  }
+};
+
+// Smooth scroll to contact section when modal button is clicked
+contactBtn.addEventListener("click", function (event) {
+  hideModal();
 });
