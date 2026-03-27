@@ -1,272 +1,267 @@
-/* ============================================================
-   TECHSON UNICORE — script.js
-   ============================================================ */
+document.addEventListener("DOMContentLoaded", function () {
+  // Mobile Navigation Toggle
+  const mobileToggle = document.querySelector(".mobile-toggle");
+  const navLinks = document.querySelector(".nav-links");
 
-/* === YEAR === */
-document.getElementById("year").textContent = new Date().getFullYear();
-
-/* === NAVBAR SCROLL === */
-const navbar = document.getElementById("navbar");
-window.addEventListener("scroll", () => {
-  navbar.classList.toggle("scrolled", window.scrollY > 40);
-});
-
-/* === MOBILE MENU === */
-const mobileToggle = document.getElementById("mobileToggle");
-const navLinks = document.getElementById("navLinks");
-
-mobileToggle.addEventListener("click", () => {
-  mobileToggle.classList.toggle("open");
-  navLinks.classList.toggle("open");
-  document.body.style.overflow = navLinks.classList.contains("open")
-    ? "hidden"
-    : "";
-});
-
-navLinks.querySelectorAll(".nav-link, .btn-nav").forEach((link) => {
-  link.addEventListener("click", () => {
-    mobileToggle.classList.remove("open");
-    navLinks.classList.remove("open");
-    document.body.style.overflow = "";
+  mobileToggle.addEventListener("click", function () {
+    navLinks.classList.toggle("active");
+    this.querySelector("i").classList.toggle("fa-bars");
+    this.querySelector("i").classList.toggle("fa-times");
   });
-});
 
-/* === ACTIVE NAV LINK === */
-const sections = document.querySelectorAll("section[id]");
-const navObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        document.querySelectorAll(".nav-link").forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === `#${entry.target.id}`) {
-            link.classList.add("active");
-          }
+  // Close mobile menu when clicking a link
+  document.querySelectorAll(".nav-links a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      mobileToggle.querySelector("i").classList.add("fa-bars");
+      mobileToggle.querySelector("i").classList.remove("fa-times");
+    });
+  });
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute("href");
+      if (targetId === "#") return;
+
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: "smooth",
         });
       }
     });
-  },
-  { rootMargin: "-40% 0px -55% 0px" },
-);
-sections.forEach((s) => navObserver.observe(s));
-
-/* === PORTFOLIO TABS === */
-document.querySelectorAll(".ptab").forEach((tab) => {
-  tab.addEventListener("click", () => {
-    document
-      .querySelectorAll(".ptab")
-      .forEach((t) => t.classList.remove("active"));
-    document
-      .querySelectorAll(".portfolio-panel")
-      .forEach((p) => p.classList.remove("active"));
-    tab.classList.add("active");
-    const panel = document.getElementById(`tab-${tab.dataset.tab}`);
-    if (panel) panel.classList.add("active");
   });
-});
 
-/* === SCROLL REVEAL === */
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12 },
-);
+  window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    const homeSection = document.getElementById("home");
+    const homeSectionHeight = homeSection.offsetHeight;
 
-document
-  .querySelectorAll(".reveal")
-  .forEach((el) => revealObserver.observe(el));
-
-const revealSelectors = [
-  ".value-card",
-  ".service-card",
-  ".client-card-text",
-  ".product-card",
-  ".testi-card",
-  ".news-card",
-  ".mv-card",
-  ".contact-method",
-  ".founder-content",
-];
-revealSelectors.forEach((sel) => {
-  document.querySelectorAll(sel).forEach((el, i) => {
-    el.classList.add("reveal");
-    el.style.transitionDelay = `${(i % 4) * 0.1}s`;
-    revealObserver.observe(el);
+    if (this.window.scrollY > homeSectionHeight - 80) {
+      // When scrolled past home section
+      navbar.style.backgroundColor = "white";
+      navbar.style.boxShadow = "0 4px 20px rgba(0,0,0, 0.1)";
+    } else {
+      // When in home section
+      navbar.style.backgroundColor = "transparent";
+      navbar.style.boxShadow = "none";
+    }
   });
-});
 
-/* === NEWS IMAGE SLIDER === */
-function initSlider(sliderEl) {
-  const slides = sliderEl.querySelectorAll(".news-slide");
-  const dots = sliderEl.querySelectorAll(".slider-dot");
-  let current = 0;
-  let timer;
+  // Form submission
+  // Get the form and modal elements
+  const enquiryForm = document.getElementById("enquiryForm");
+  const statusModal = document.getElementById("statusModal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalMessage = document.getElementById("modalMessage");
+  const closeBtn = statusModal.querySelector(".close-btn");
 
-  function goTo(index) {
-    slides[current].classList.remove("active");
-    dots[current].classList.remove("active");
-    current = (index + slides.length) % slides.length;
-    slides[current].classList.add("active");
-    dots[current].classList.add("active");
-  }
-  function startAuto() {
-    timer = setInterval(() => goTo(current + 1), 4000);
-  }
-  function stopAuto() {
-    clearInterval(timer);
+  // Function to show the modal with custom content
+  function showStatusModal(isSuccess) {
+    if (isSuccess) {
+      modalTitle.textContent = "Success! 🎉";
+      modalMessage.textContent =
+        "Thank you for your enquiry! We have received your message and will get back to you shortly.";
+      statusModal.querySelector(".modal-content").classList.remove("error");
+      statusModal.querySelector(".modal-content").classList.add("success");
+    } else {
+      modalTitle.textContent = "Error! 😔";
+      modalMessage.textContent =
+        "Oops! Something went wrong while submitting your form. Please try again or contact us directly.";
+      statusModal.querySelector(".modal-content").classList.remove("success");
+      statusModal.querySelector(".modal-content").classList.add("error");
+    }
+
+    statusModal.style.display = "flex";
+    setTimeout(() => statusModal.classList.add("show"), 10);
+
+    // Auto-hide the modal after 5 seconds
+    setTimeout(() => {
+      hideStatusModal();
+    }, 5000);
   }
 
-  sliderEl.querySelector(".slider-next")?.addEventListener("click", () => {
-    stopAuto();
-    goTo(current + 1);
-    startAuto();
-  });
-  sliderEl.querySelector(".slider-prev")?.addEventListener("click", () => {
-    stopAuto();
-    goTo(current - 1);
-    startAuto();
-  });
-  dots.forEach((dot) => {
-    dot.addEventListener("click", () => {
-      stopAuto();
-      goTo(+dot.dataset.index);
-      startAuto();
-    });
-  });
-  startAuto();
-}
-document.querySelectorAll(".news-slider").forEach(initSlider);
-
-/* === FORM STATUS MODAL === */
-const statusModal = document.getElementById("statusModal");
-const modalTitle = document.getElementById("modalTitle");
-const modalMessage = document.getElementById("modalMessage");
-const modalClose = document.getElementById("modalClose");
-
-function showStatusModal(title, message) {
-  modalTitle.textContent = title;
-  modalMessage.textContent = message;
-  statusModal.classList.add("open");
-  document.body.style.overflow = "hidden";
-}
-
-if (modalClose) {
-  modalClose.addEventListener("click", () => {
-    statusModal.classList.remove("open");
-    document.body.style.overflow = "";
-  });
-}
-statusModal?.addEventListener("click", (e) => {
-  if (e.target === statusModal) {
-    statusModal.classList.remove("open");
-    document.body.style.overflow = "";
+  // Function to hide the modal
+  function hideStatusModal() {
+    statusModal.classList.remove("show");
+    setTimeout(() => (statusModal.style.display = "none"), 300);
   }
-});
 
-/* === CONTACT FORM === */
-const enquiryForm = document.getElementById("enquiryForm");
-if (enquiryForm) {
-  enquiryForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const submitBtn = enquiryForm.querySelector(".form-submit");
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    submitBtn.disabled = true;
-    try {
+  // Event listeners for closing the modal
+  closeBtn.onclick = function () {
+    hideStatusModal();
+  };
+
+  window.onclick = function (event) {
+    if (event.target === statusModal) {
+      hideStatusModal();
+    }
+  };
+
+  // Handle form submission
+  if (enquiryForm) {
+    enquiryForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Get the form data
       const formData = new FormData(enquiryForm);
-      const response = await fetch("/", {
+
+      // Netlify requires the form name in the data
+      const data = new URLSearchParams(formData);
+
+      // Show a temporary loading state if needed (optional)
+      // For now, we'll proceed directly to submission
+
+      fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-      });
-      if (response.ok) {
-        showStatusModal(
-          "Message Sent! 🎉",
-          "Thank you for reaching out. We'll get back to you within 24 hours.",
-        );
-        enquiryForm.reset();
-      } else throw new Error("error");
-    } catch {
-      showStatusModal(
-        "Oops!",
-        "Something went wrong. Please reach out directly via WhatsApp or email.",
-      );
-    } finally {
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
-    }
-  });
-}
-
-/* === NEWSLETTER FORM === */
-const newsletterForm = document.getElementById("newsletterForm");
-if (newsletterForm) {
-  newsletterForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const btn = newsletterForm.querySelector("button");
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
-    btn.disabled = true;
-    try {
-      const formData = new FormData(newsletterForm);
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-      });
-      if (response.ok) {
-        btn.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
-        newsletterForm.reset();
-        setTimeout(() => {
-          btn.innerHTML = 'Subscribe <i class="fas fa-arrow-right"></i>';
-          btn.disabled = false;
-        }, 3000);
-      }
-    } catch {
-      btn.innerHTML = 'Subscribe <i class="fas fa-arrow-right"></i>';
-      btn.disabled = false;
-    }
-  });
-}
-
-/* === FIX 5: ARTICLE MODAL (Read More) === */
-const articleModal = document.getElementById("articleModal");
-const articleModalClose = document.getElementById("articleModalClose");
-
-document.querySelectorAll(".news-read-more-btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    articleModal.classList.add("open");
-    document.body.style.overflow = "hidden";
-  });
-});
-
-function closeArticleModal() {
-  articleModal.classList.remove("open");
-  document.body.style.overflow = "";
-}
-
-articleModalClose?.addEventListener("click", closeArticleModal);
-articleModal?.addEventListener("click", (e) => {
-  if (e.target === articleModal) closeArticleModal();
-});
-
-// Article CTA closes modal and scrolls to contact
-document
-  .querySelector(".article-contact-link")
-  ?.addEventListener("click", () => {
-    closeArticleModal();
-  });
-
-/* === ESC to close any modal === */
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    statusModal?.classList.remove("open");
-    articleModal?.classList.remove("open");
-    document.body.style.overflow = "";
+        body: data,
+      })
+        .then((response) => {
+          if (response.ok) {
+            showStatusModal(true); // Show success modal
+            enquiryForm.reset();
+          } else {
+            showStatusModal(false); // Show error modal
+          }
+        })
+        .catch((error) => {
+          console.error("Form submission error:", error);
+          showStatusModal(false); // Show error modal on network failure
+        });
+    });
   }
+
+  // Set current year in footer
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Add shadow to navbar on scroll
+  window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    if (window.scrollY > 50) {
+      navbar.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.1)";
+    } else {
+      navbar.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+    }
+  });
+});
+
+// Project Sliders
+document.querySelectorAll(".project-slider").forEach((slider) => {
+  const container = slider.querySelector(".slider-container");
+  const slides = slider.querySelectorAll(".slide");
+  const prevBtn = slider.querySelector(".prev-slide");
+  const nextBtn = slider.querySelector(".next-slide");
+  const dotsContainer = slider.querySelector(".slide-dots");
+
+  let currentSlide = 0;
+  const totalSlides = slides.length;
+
+  // Create dots
+  slides.forEach((_, index) => {
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+    if (index === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => goToSlide(index));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = slider.querySelectorAll(".dot");
+
+  // Update slider position
+  function updateSlider() {
+    container.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    // Update dots
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentSlide);
+    });
+  }
+
+  // Go to specific slide
+  function goToSlide(slideIndex) {
+    currentSlide = slideIndex;
+    if (currentSlide >= totalSlides) currentSlide = 0;
+    if (currentSlide < 0) currentSlide = totalSlides - 1;
+    updateSlider();
+  }
+
+  // Next slide
+  function nextSlide() {
+    goToSlide(currentSlide + 1);
+  }
+
+  // Previous slide
+  function prevSlide() {
+    goToSlide(currentSlide - 1);
+  }
+
+  // Event listeners
+  nextBtn.addEventListener("click", nextSlide);
+  prevBtn.addEventListener("click", prevSlide);
+
+  // Auto-advance slides (optional)
+  let slideInterval = setInterval(nextSlide, 5000);
+
+  slider.addEventListener("mouseenter", () => {
+    clearInterval(slideInterval);
+  });
+
+  slider.addEventListener("mouseleave", () => {
+    slideInterval = setInterval(nextSlide, 5000);
+  });
+});
+
+// Pop up model for project section
+// Get the modal
+const modal = document.getElementById("demoModal");
+const contactBtn = modal.querySelector(".modal-contact-btn");
+
+// Get all "View Demo" buttons
+const demoButtons = document.querySelectorAll(
+  '.projects-grid a.project-link[href="#"]'
+);
+
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName("close-btn")[0];
+
+// Function to show the modal
+function showModal() {
+  modal.style.display = "flex";
+  setTimeout(() => modal.classList.add("show"), 10);
+}
+
+// Function to hide the modal
+function hideModal() {
+  modal.classList.remove("show");
+  setTimeout(() => (modal.style.display = "none"), 300);
+}
+
+// When the user clicks on a button with href="#", open the modal
+demoButtons.forEach((button) => {
+  button.addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent the default anchor behavior
+    showModal();
+  });
+});
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  hideModal();
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    hideModal();
+  }
+};
+
+// Smooth scroll to contact section when modal button is clicked
+contactBtn.addEventListener("click", function (event) {
+  hideModal();
 });
