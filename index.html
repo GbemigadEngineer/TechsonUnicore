@@ -1,11 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Techson Unicore | Innovative Technology Solutions</title>
+    <!-- FIX 1: Company logo as favicon -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="icon"
+      type="image/jpeg"
+      href="./assets/Techson Unicore logo asset 3.jpg"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/jpeg"
+      href="./assets/Techson Unicore logo asset 3.jpg"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
       rel="stylesheet"
     />
     <link
@@ -15,158 +26,1142 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-      <div class="container nav-container">
-        <a href="#" class="logo">
-          <i class="fas fa-microchip"></i>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">
+          <!-- FIX 2: Larger logo -->
+          <img
+            class="logo-img"
+            src="./assets/Techson Unicore logo asset 3.jpg"
+            alt="Techson Unicore Logo"
+          />
           <span>Techson Unicore</span>
         </a>
-
-        <button class="mobile-toggle">
-          <i class="fas fa-bars"></i>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
         </button>
-
-        <ul class="nav-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Policies</a></li>
-          <li><a href="#">Contact</a></li>
-          <li class="nav-cta">
-            <a href="#" class="btn btn-secondary">
-              <i class="fas fa-paper-plane"></i> Get Started
-            </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+          <li><a href="#founder" class="nav-link">Founder</a></li>
+          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+          <li><a href="#news" class="nav-link">News</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li>
+            <a href="#contact" class="btn-nav"
+              >Get Started <i class="fas fa-arrow-right"></i
+            ></a>
           </li>
         </ul>
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <!-- Tech Background Animation -->
-      <div class="tech-background">
-        <div class="circle circle-1"></div>
-        <div class="circle circle-2"></div>
-        <div class="circle circle-3"></div>
-
-        <div class="floating-element element-1">
-          <i class="fas fa-globe"></i>
+    <!-- ===== HERO ===== -->
+    <section id="home" class="hero">
+      <div class="hero-bg-grid"></div>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="container">
+        <div class="hero-eyebrow">
+          <span class="badge-dot"></span>
+          <span>Officially Registered · CAC Nigeria</span>
         </div>
-        <div class="floating-element element-2">
-          <i class="fas fa-code"></i>
+        <h1 class="hero-title">
+          We Build <em>Digital Futures</em><br />for Ambitious Businesses
+        </h1>
+        <p class="hero-sub">
+          From startups to enterprises, Techson Unicore crafts tailored web
+          applications, mobile products, and digital solutions that scale with
+          your vision.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary"
+            ><i class="fas fa-rocket"></i> Start a Project</a
+          >
+          <a href="#portfolio" class="btn btn-ghost"
+            >See Our Work <i class="fas fa-arrow-right"></i
+          ></a>
         </div>
-        <div class="floating-element element-3">
-          <i class="fas fa-server"></i>
-        </div>
-        <div class="floating-element element-4">
-          <i class="fas fa-mobile-alt"></i>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">2+</span
+            ><span class="stat-label">Live Client Sites</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">4</span
+            ><span class="stat-label">Products in Development</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">CAC</span
+            ><span class="stat-label">Registered Company</span>
+          </div>
         </div>
       </div>
-
-      <div class="container">
-        <div class="hero-content animate">
-          <h1>Techson Unicore: Powerful Web Solutions Real Business Value.</h1>
-          <p class="text-lead animate delay-1">
-            Where business ideas meet cutting-edge technology, we deliver custom
-            solutions that drive success and innovation.
-          </p>
-          <div class="hero-buttons">
-            <a href="#" class="btn btn-primary animate delay-2"
-              >Free Business Consultation</a
-            >
-            <a href="#" class="btn btn-outline animate delay-3">Contact Us</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-      <div class="container">
-        <div class="grid grid-3">
-          <div class="stat-item animate">
-            <div class="stat-number">250+</div>
-            <h3>Happy Clients</h3>
-          </div>
-
-          <div class="stat-item animate delay-1">
-            <div class="stat-number">98%</div>
-            <h3>Client Retention</h3>
-          </div>
-
-          <div class="stat-item animate delay-2">
-            <div class="stat-number">500+</div>
-            <h3>Projects Completed</h3>
-          </div>
-        </div>
+      <div class="hero-scroll-indicator">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
       </div>
     </section>
-    <!-- Footer -->
-    <footer class="footer">
+
+    <!-- ===== TICKER ===== -->
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <span>Web Development</span><span class="ticker-dot">✦</span>
+        <span>Mobile Apps</span><span class="ticker-dot">✦</span>
+        <span>Enterprise Solutions</span><span class="ticker-dot">✦</span>
+        <span>Digital Products</span><span class="ticker-dot">✦</span>
+        <span>CAC Registered</span><span class="ticker-dot">✦</span>
+        <span>Custom Software</span><span class="ticker-dot">✦</span>
+        <span>SEO & Marketing</span><span class="ticker-dot">✦</span>
+        <span>Web Development</span><span class="ticker-dot">✦</span>
+        <span>Mobile Apps</span><span class="ticker-dot">✦</span>
+        <span>Enterprise Solutions</span><span class="ticker-dot">✦</span>
+        <span>Digital Products</span><span class="ticker-dot">✦</span>
+        <span>CAC Registered</span><span class="ticker-dot">✦</span>
+        <span>Custom Software</span><span class="ticker-dot">✦</span>
+        <span>SEO & Marketing</span><span class="ticker-dot">✦</span>
+      </div>
+    </div>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="section">
       <div class="container">
-        <div class="footer-grid">
-          <div>
-            <a href="#" class="footer-logo">
-              <i class="fas fa-microchip"></i> Techson Unicore
-            </a>
-            <p>
-              Delivering innovative technology solutions with precision,
-              reliability, and excellence.
+        <div class="section-header">
+          <span class="section-tag">Who We Are</span>
+          <h2 class="section-title">
+            Built to Empower. <br />Driven to Deliver.
+          </h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-image-wrap">
+            <img
+              src="assets/team-leader-supervising-it-workers-server-room-maintaining-databases.jpg"
+              alt="Techson Unicore team"
+              loading="lazy"
+            />
+            <div class="about-image-badge">
+              <i class="fas fa-certificate"></i>
+              <div>
+                <strong>CAC Registered</strong><span>2026 Milestone</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-content">
+            <p class="about-intro">
+              Techson Unicore is a dynamic Nigerian tech startup dedicated to
+              providing innovative digital solutions for businesses of all sizes
+              from SMEs to large enterprises.
             </p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
+            <p class="about-body">
+              We believe technology should be accessible, powerful, and
+              tailored. Every solution we build is shaped by your goals, your
+              audience, and the future you're working toward.
+            </p>
+            <div class="mv-grid">
+              <div class="mv-card">
+                <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
+                <h4>Mission</h4>
+                <p>
+                  To empower businesses by transforming ideas into impactful
+                  digital solutions, making technology accessible to every
+                  organization, regardless of size.
+                </p>
+              </div>
+              <div class="mv-card">
+                <div class="mv-icon"><i class="fas fa-eye"></i></div>
+                <h4>Vision</h4>
+                <p>
+                  To be a leading technology partner for businesses across
+                  Africa, recognized for innovation, quality, and commitment to
+                  digital transformation.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="values-row">
+          <div class="value-card">
+            <i class="fas fa-lightbulb"></i>
+            <h4>Innovation</h4>
+            <p>
+              Staying ahead of tech trends to deliver future-ready solutions.
+            </p>
+          </div>
+          <div class="value-card">
+            <i class="fas fa-hand-holding-usd"></i>
+            <h4>Affordability</h4>
+            <p>Quality digital solutions at prices that make business sense.</p>
+          </div>
+          <div class="value-card">
+            <i class="fas fa-users"></i>
+            <h4>Client-First</h4>
+            <p>Every solution is tailored to your unique business needs.</p>
+          </div>
+          <div class="value-card">
+            <i class="fas fa-hands-helping"></i>
+            <h4>Collaboration</h4>
+            <p>We work with you, not just for you — every step of the way.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="services" class="section section-dark">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">What We Do</span>
+          <h2 class="section-title">
+            Techson Unicore Comprehensive Digital <br />Solutions
+          </h2>
+          <p class="section-sub">
+            End-to-end technology services designed to take your business from
+            idea to impact.
+          </p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card service-card--featured">
+            <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+            <h3>Website Design & Development</h3>
+            <p>
+              Powerful, responsive, SEO-optimized websites that convert visitors
+              into customers and represent your brand at its best.
+            </p>
+            <ul>
+              <li>Responsive & mobile-first design</li>
+              <li>SEO optimized structure</li>
+              <li>Enhanced user experience</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h3>Mobile App Development</h3>
+            <p>
+              Innovative iOS and Android solutions crafted for real users, with
+              cross-platform development and app store optimization.
+            </p>
+            <ul>
+              <li>iOS & Android platforms</li>
+              <li>Cross-platform development</li>
+              <li>App store optimization</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-cloud"></i></div>
+            <h3>Custom Web Applications</h3>
+            <p>
+              Bespoke software solutions built to tackle your specific business
+              challenges — scalable, secure, and multi-device compatible.
+            </p>
+            <ul>
+              <li>Tailored business logic</li>
+              <li>Scalable architecture</li>
+              <li>Multi-device compatibility</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-boxes"></i></div>
+            <h3>Digital Products</h3>
+            <p>
+              Proprietary platforms and subscription-based digital products
+              built for specific industries and markets.
+            </p>
+            <ul>
+              <li>SaaS & subscription models</li>
+              <li>Innovative platforms</li>
+              <li>Industry-specific solutions</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-building"></i></div>
+            <h3>Enterprise Solutions</h3>
+            <p>
+              Comprehensive digital transformation for large organizations —
+              scalable architectures, integrations, and industry-specific
+              applications.
+            </p>
+            <ul>
+              <li>Large-scale collaboration</li>
+              <li>System integrations</li>
+              <li>Scalable infrastructure</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-plus-circle"></i></div>
+            <h3>Additional Services</h3>
+            <p>
+              A full suite of supporting services to keep your digital presence
+              sharp and growing.
+            </p>
+            <ul>
+              <li>Digital Marketing & SEO</li>
+              <li>Professional email setup</li>
+              <li>Technical support & training</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PORTFOLIO ===== -->
+    <section id="portfolio" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Our Work</span>
+          <h2 class="section-title">Portfolio</h2>
+          <p class="section-sub">
+            Real client work and ambitious products in the pipeline.
+          </p>
+        </div>
+        <div class="portfolio-tabs">
+          <button class="ptab active" data-tab="client">Client Work</button>
+          <button class="ptab" data-tab="products">
+            Products in Development
+          </button>
+        </div>
+
+        <!-- FIX 3: No images — clean info/text cards -->
+        <div class="portfolio-panel active" id="tab-client">
+          <div class="client-grid">
+            <div class="client-card-text">
+              <div class="client-card-header">
+                <div class="client-logo-placeholder">TT</div>
+                <div>
+                  <span class="client-tag">Travel & Consultancy</span>
+                  <h3>Tedex Travels Consulting Ltd</h3>
+                </div>
+              </div>
+              <p>
+                A conversion-focused website for a growing travel consultancy,
+                built for all devices with strategic CTAs, inquiry forms, and a
+                scalable foundation for competitive industry entry.
+              </p>
+              <div class="client-highlights">
+                <div class="client-highlight">
+                  <i class="fas fa-check-circle"></i
+                  ><span>Fully responsive & mobile-first design</span>
+                </div>
+                <div class="client-highlight">
+                  <i class="fas fa-check-circle"></i
+                  ><span>Conversion-focused with strategic CTAs</span>
+                </div>
+                <div class="client-highlight">
+                  <i class="fas fa-check-circle"></i
+                  ><span>SEO-optimized for industry visibility</span>
+                </div>
+                <div class="client-highlight">
+                  <i class="fas fa-check-circle"></i
+                  ><span>Scalable foundation for business growth</span>
+                </div>
+              </div>
+              <div class="client-card-footer">
+                <a
+                  href="https://tedextravel.org/"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn btn-primary client-btn"
+                >
+                  <i class="fas fa-external-link-alt"></i> View Live Site
+                </a>
+              </div>
+            </div>
+
+            <div class="client-card-text">
+              <div class="client-card-header">
+                <div
+                  class="client-logo-placeholder client-logo-placeholder--alt"
+                >
+                  EA
+                </div>
+                <div>
+                  <span class="client-tag">Environmental Consulting</span>
+                  <h3>EAA Associates Ltd</h3>
+                </div>
+              </div>
+              <p>
+                A professional multi-page website for an environmental and
+                climate advisory firm serving UNICEF, UBA, and African Union
+                partners — built to reflect credibility and global standards.
+              </p>
+              <div class="client-highlights">
+                <div class="client-highlight">
+                  <i class="fas fa-check-circle"></i
+                  ><span>Multi-page architecture with service sub-pages</span>
+                </div>
+                <div class="client-highlight">
+                  <i class="fas fa-check-circle"></i
+                  ><span>Professional design aligned to global standards</span>
+                </div>
+                <div class="client-highlight">
+                  <i class="fas fa-check-circle"></i
+                  ><span>Consultation booking & contact integration</span>
+                </div>
+                <div class="client-highlight">
+                  <i class="fas fa-check-circle"></i
+                  ><span>Trusted by UNICEF, UBA & AU partners</span>
+                </div>
+              </div>
+              <div class="client-card-footer">
+                <a
+                  href="https://www.eaaassociates.org/"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn btn-primary client-btn"
+                >
+                  <i class="fas fa-external-link-alt"></i> View Live Site
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-panel" id="tab-products">
+          <div class="products-intro">
+            <p>
+              These are Techson Unicore's own digital products currently in
+              active development — ambitious tools being built to solve real
+              problems across Nigeria and Africa.
+            </p>
+          </div>
+          <div class="products-grid">
+            <div class="product-card">
+              <div class="product-status">In Development</div>
+              <div class="product-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <h3>Eduplex</h3>
+              <p>
+                A comprehensive school administration digitalization platform
+                with AI-powered analytics, role-based dashboards, and automated
+                communication tools for academic institutions.
+              </p>
+              <div class="product-features">
+                <span><i class="fas fa-check"></i> AI academic analytics</span>
+                <span
+                  ><i class="fas fa-check"></i> Admin & teacher dashboards</span
+                >
+                <span><i class="fas fa-check"></i> Automated reporting</span>
+              </div>
+              <a href="#contact" class="btn btn-outline-gold"
+                >Express Interest</a
+              >
+            </div>
+            <div class="product-card">
+              <div class="product-status">In Development</div>
+              <div class="product-icon"><i class="fas fa-heartbeat"></i></div>
+              <h3>Fitpad</h3>
+              <p>
+                A fitness and medical data management application with real-time
+                AI interaction for health insights, anomaly detection, and
+                centralized compliance reporting.
+              </p>
+              <div class="product-features">
+                <span
+                  ><i class="fas fa-check"></i> Real-time AI health
+                  insights</span
+                >
+                <span><i class="fas fa-check"></i> Multi-facility support</span>
+                <span><i class="fas fa-check"></i> Compliance tracking</span>
+              </div>
+              <a href="#contact" class="btn btn-outline-gold"
+                >Express Interest</a
+              >
+            </div>
+            <div class="product-card">
+              <div class="product-status">In Development</div>
+              <div class="product-icon">
+                <i class="fas fa-calendar-alt"></i>
+              </div>
+              <h3>Vicer</h3>
+              <p>
+                An advanced roster and schedule management system with automated
+                shift generation, customizable rules, and workforce optimization
+                analytics to reduce costs.
+              </p>
+              <div class="product-features">
+                <span
+                  ><i class="fas fa-check"></i> Automated roster
+                  generation</span
+                >
+                <span
+                  ><i class="fas fa-check"></i> Real-time shift updates</span
+                >
+                <span><i class="fas fa-check"></i> Workforce analytics</span>
+              </div>
+              <a href="#contact" class="btn btn-outline-gold"
+                >Express Interest</a
+              >
+            </div>
+            <div class="product-card product-card--teaser">
+              <div class="product-status product-status--concept">Concept</div>
+              <div class="product-icon"><i class="fas fa-lightbulb"></i></div>
+              <h3>More Coming</h3>
+              <p>
+                Techson Unicore is constantly building. New products are in
+                ideation for healthcare, education, and SME automation. Watch
+                this space.
+              </p>
+              <a href="#news" class="btn btn-outline-gold">Follow Our News</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOUNDER ===== -->
+    <section id="founder" class="section section-dark">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">The Person Behind It</span>
+          <h2 class="section-title">Meet the Founder</h2>
+        </div>
+        <div class="founder-grid">
+          <div class="founder-image-wrap">
+            <div class="founder-img-placeholder">
+              <img src="assets/_MG_9339.JPG" alt="Oduwole Oluwagbemiga" />
+            </div>
+            <!-- FIX 4: Correct X/Twitter icon using fa-brands -->
+            <div class="founder-social-links">
+              <a
+                href="https://x.com/Oluwagbemiga_7p"
+                target="_blank"
+                rel="noopener"
+                aria-label="Twitter/X"
+              >
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/oluwagbemigaoduwole2001/"
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="https://github.com/GbemigadEngineer"
+                target="_blank"
+                rel="noopener"
+                aria-label="GitHub"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <div class="founder-content">
+            <h3 class="founder-name">Oduwole Oluwagbemiga Samuel</h3>
+            <span class="founder-role">Founder & CEO, Techson Unicore</span>
+            <p class="founder-bio">
+              Oluwagbemiga is a Back-End Engineer and tech entrepreneur with a
+              B.Sc. in Computer Science from Babcock University. With hands-on
+              experience in building RESTful APIs, scalable backend systems, and
+              optimizing IT infrastructures across healthcare facilities, he
+              founded Techson Unicore to bridge the gap between ambitious
+              businesses and world-class digital solutions.
+            </p>
+            <p class="founder-bio">
+              His background spans software development, network engineering,
+              and IT security, giving Techson Unicore a uniquely technical and
+              practical foundation. He is passionate about building products
+              that solve real problems for African businesses and institutions.
+            </p>
+            <div class="founder-skills">
+              <span>Back End Development</span>
+              <span>Network Administrator</span>
+              <span>IT Support</span>
+              <span>Full Stack Development</span>
+            </div>
+            <div class="founder-actions">
+              <a
+                href="./assets/ODUWOLE_OLUWAGBEMIGA.pdf"
+                download
+                class="btn btn-primary"
+                ><i class="fas fa-download"></i> Download CV</a
+              >
+              <a
+                href="https://www.linkedin.com/in/oluwagbemigaoduwole2001/"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-ghost"
+                ><i class="fab fa-linkedin-in"></i> LinkedIn Profile</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section id="testimonials" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Client Voices</span>
+          <h2 class="section-title">What Our Clients Say</h2>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testi-card testi-card--featured">
+            <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
+            <p>
+              "Working with Techson Unicore was a seamless experience from start
+              to finish. They understood our brand, our audience, and delivered
+              a website that has genuinely helped us grow our client base.
+              Professional, responsive, and technically excellent."
+            </p>
+            <div class="testi-author">
+              <div class="testi-avatar">TT</div>
+              <div>
+                <strong>Mr Damilola Oginni</strong
+                ><span>CEO, Tedex Travels Consulting Ltd</span>
+              </div>
+            </div>
+            <div class="testi-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
+            <p>
+              "The team at Techson Unicore delivered a world-class website that
+              reflects the professional standard our firm operates at. Our
+              clients and partners have been very impressed with the new online
+              presence."
+            </p>
+            <div class="testi-author">
+              <div class="testi-avatar">EA</div>
+              <div>
+                <strong>Dr. Bobadoye Ayodotun</strong
+                ><span>Founder, EAA Associates Ltd</span>
+              </div>
+            </div>
+            <div class="testi-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="testi-card testi-card--placeholder">
+            <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
+            <p>
+              "An incredible team that brings real technical depth to every
+              project. They don't just build websites, they build digital
+              experiences that move business forward. Our collaboration with
+              Techson Unicore is an experience we want to keep building on."
+            </p>
+            <div class="testi-author">
+              <div class="testi-avatar">CL</div>
+              <div>
+                <strong>Mr. Yomi Durojaye</strong><span>CEO, The Quilp</span>
+              </div>
+            </div>
+            <div class="testi-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NEWS ===== -->
+    <section id="news" class="section section-dark">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Stay Updated</span>
+          <h2 class="section-title">Latest from Techson Unicore</h2>
+        </div>
+        <div class="news-grid">
+          <div class="news-card news-card--featured">
+            <div class="news-slider" id="newsSlider">
+              <div class="news-slides">
+                <div class="news-slide active">
+                  <img
+                    src="assets/Techson Unicore logo asset 3.jpg"
+                    alt="CAC Registration milestone"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="news-slide">
+                  <img
+                    src="assets/Techson Unicore logo asset 3.jpg"
+                    alt="Business registration documents"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="news-slide">
+                  <img
+                    src="assets/cac logo.jpg"
+                    alt="Techson workspace"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <span class="news-badge news-badge--milestone">🎉 Milestone</span>
+              <div class="slider-controls">
+                <button class="slider-btn slider-prev" aria-label="Previous">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slider-dots">
+                  <span class="slider-dot active" data-index="0"></span>
+                  <span class="slider-dot" data-index="1"></span>
+                  <span class="slider-dot" data-index="2"></span>
+                </div>
+                <button class="slider-btn slider-next" aria-label="Next">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+            <div class="news-body">
+              <div class="news-meta">
+                <span><i class="fas fa-calendar"></i> March 2025</span>
+                <span><i class="fas fa-tag"></i> Company News</span>
+              </div>
+              <h3>Techson Unicore is Officially CAC Registered!</h3>
+              <p>
+                A huge milestone for us — Techson Unicore is now officially
+                registered with the Corporate Affairs Commission (CAC) of
+                Nigeria, marking our formal entry as a legally recognized
+                business entity.
+              </p>
+              <!-- FIX 5: Read More triggers article modal -->
+              <button class="news-link news-read-more-btn" data-article="cac">
+                Read More <i class="fas fa-arrow-right"></i>
+              </button>
             </div>
           </div>
 
-          <div class="footer-links">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Case Studies</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-links">
-            <h4>Services</h4>
-            <ul>
-              <li><a href="#">Cloud Solutions</a></li>
-              <li><a href="#">Cyber Security</a></li>
-              <li><a href="#">AI & Automation</a></li>
-              <li><a href="#">App Development</a></li>
-              <li><a href="#">IT Consulting</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-links">
-            <h4>Contact Us</h4>
-            <ul>
-              <li>
-                <i class="fas fa-map-marker-alt"></i> 123 Tech Street, San
-                Francisco
-              </li>
-              <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-              <li><i class="fas fa-envelope"></i> info@techsonunicore.com</li>
-              <li><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM</li>
-            </ul>
+          <div class="news-side">
+            <div class="news-card news-card--small news-card--has-img">
+              <div class="news-card-img">
+                <img
+                  src="assets/eduplexdashboard.png"
+                  alt="Eduplex school management"
+                  loading="lazy"
+                />
+                <span class="news-badge news-badge--coming"
+                  >🚀 Coming Soon</span
+                >
+              </div>
+              <div class="news-body">
+                <div class="news-meta">
+                  <span><i class="fas fa-calendar"></i> Coming Soon</span>
+                  <span><i class="fas fa-tag"></i> Product Launch</span>
+                </div>
+                <h3>Eduplex Beta Launch Approaching</h3>
+                <p>
+                  Schools and educators, the future of school administration is
+                  almost here. Reach out to join the early access list.
+                </p>
+                <a href="#contact" class="news-link"
+                  >Get Early Access <i class="fas fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+            <div class="news-card news-card--small">
+              <div class="news-body">
+                <div class="news-meta">
+                  <span><i class="fas fa-calendar"></i> February 2025</span>
+                  <span><i class="fas fa-tag"></i> Portfolio</span>
+                </div>
+                <h3>EAA Associates Website Goes Live</h3>
+                <p>
+                  We delivered a world-class site for an environmental
+                  consulting firm working with UNICEF, UBA, and African Union
+                  partners.
+                </p>
+                <a
+                  href="https://www.eaaassociates.org/"
+                  target="_blank"
+                  rel="noopener"
+                  class="news-link"
+                  >View Site <i class="fas fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
           </div>
         </div>
 
+        <div class="newsletter-box">
+          <div class="newsletter-text">
+            <i class="fas fa-paper-plane newsletter-icon"></i>
+            <div>
+              <h3>Get Techson Updates in Your Inbox</h3>
+              <p>
+                Product launches, company news, and tech insights, delivered
+                straight to you.
+              </p>
+            </div>
+          </div>
+          <form
+            class="newsletter-form"
+            id="newsletterForm"
+            name="newsletter"
+            method="POST"
+            data-netlify="true"
+          >
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email address"
+              required
+            />
+            <button type="submit" class="btn btn-primary">
+              Subscribe <i class="fas fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Get In Touch</span>
+          <h2 class="section-title">
+            Let's Build Something <br />Great Together
+          </h2>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p class="contact-intro">
+              Have a project in mind? Want to discuss a partnership? Want
+              general consultation? Or just curious about what we can do for
+              your business? We'd love to hear from you.
+            </p>
+            <div class="contact-methods">
+              <a
+                href="https://wa.me/2348068797494"
+                target="_blank"
+                rel="noopener"
+                class="contact-method"
+              >
+                <div class="contact-method-icon">
+                  <i class="fab fa-whatsapp"></i>
+                </div>
+                <div>
+                  <strong>WhatsApp / Phone</strong><span>08068797494</span>
+                </div>
+              </a>
+              <a href="mailto:techsonunicore@gmail.com" class="contact-method">
+                <div class="contact-method-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <strong>Email</strong><span>techsonunicore@gmail.com</span>
+                </div>
+              </a>
+              <a
+                href="https://web.facebook.com/profile.php?id=61576972487428"
+                target="_blank"
+                rel="noopener"
+                class="contact-method"
+              >
+                <div class="contact-method-icon">
+                  <i class="fab fa-facebook-f"></i>
+                </div>
+                <div><strong>Facebook</strong><span>Techson Unicore</span></div>
+              </a>
+              <div class="contact-method">
+                <div class="contact-method-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <strong>Location</strong
+                  ><span>Redemption Camp, Haggai Estate</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form-wrap">
+            <form
+              class="contact-form"
+              id="enquiryForm"
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+            >
+              <p style="display: none">
+                <label>Don't fill this out: <input name="bot-field" /></label>
+              </p>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Full Name</label
+                  ><input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address</label
+                  ><input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="phone">Phone Number</label
+                  ><input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+234..."
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="service">Service</label>
+                  <select id="service" name="service">
+                    <option value="">Select a service</option>
+                    <option value="web-design">Website Design</option>
+                    <option value="mobile-app">Mobile App Development</option>
+                    <option value="custom-software">Custom Software</option>
+                    <option value="testing">Product Testing / Beta</option>
+                    <option value="digital-products">Digital Products</option>
+                    <option value="enterprise">Enterprise Solutions</option>
+                    <option value="other">Other Services</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label
+                ><textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Tell us about your project..."
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary form-submit">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <!-- FIX 6: Logo image in footer -->
+            <a href="#home" class="footer-logo">
+              <img
+                src="./assets/Techson Unicore logo asset 3.jpg"
+                alt="Techson Unicore"
+                class="footer-logo-img"
+              />
+              <span>Techson Unicore</span>
+            </a>
+            <p>
+              Innovative technology solutions for businesses of all sizes.
+              Transforming ideas into digital success — across Nigeria and
+              beyond.
+            </p>
+            <div class="footer-socials">
+              <a
+                href="https://web.facebook.com/profile.php?id=61576972487428"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://x.com/Oluwagbemiga_7p"
+                target="_blank"
+                rel="noopener"
+                aria-label="Twitter/X"
+                ><i class="fa-brands fa-x-twitter"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/oluwagbemigaoduwole2001/"
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a
+                href="https://github.com/GbemigadEngineer"
+                target="_blank"
+                rel="noopener"
+                aria-label="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+          <div class="footer-links-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#founder">Our Founder</a></li>
+              <li><a href="#news">News</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-col">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#services">Website Development</a></li>
+              <li><a href="#services">Mobile Apps</a></li>
+              <li><a href="#services">Custom Software</a></li>
+              <li><a href="#services">Enterprise Solutions</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-col">
+            <h4>Portfolio</h4>
+            <ul>
+              <li>
+                <a href="https://tedextravel.org/" target="_blank"
+                  >Tedex Travels</a
+                >
+              </li>
+              <li>
+                <a href="https://www.eaaassociates.org/" target="_blank"
+                  >EAA Associates</a
+                >
+              </li>
+              <li><a href="#portfolio">Eduplex</a></li>
+              <li><a href="#portfolio">Fitpad</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="tel:08068797494">08068797494</a></li>
+              <li>
+                <a href="mailto:techsonunicore@gmail.com"
+                  >techsonunicore@gmail.com</a
+                >
+              </li>
+              <li><span>Redemption Camp, Ogun State</span></li>
+            </ul>
+          </div>
+        </div>
         <div class="footer-bottom">
           <p>
-            &copy; 2023 Techson Unicore. All rights reserved. | Designed with
-            <i class="fas fa-heart" style="color: var(--secondary)"></i> for
-            Excellence
+            &copy; <span id="year"></span> Techson Unicore. All Rights Reserved.
+            · CAC Registered · Nigeria
           </p>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a><a href="#">Terms of Service</a>
+          </div>
         </div>
       </div>
     </footer>
+
+    <!-- Form status modal -->
+    <div id="statusModal" class="modal">
+      <div class="modal-content">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <h3 id="modalTitle"></h3>
+        <p id="modalMessage"></p>
+      </div>
+    </div>
+
+    <!-- FIX 5: CAC Article Modal -->
+    <div id="articleModal" class="modal article-modal">
+      <div class="modal-content article-modal-content">
+        <button class="modal-close" id="articleModalClose">&times;</button>
+        <div class="article-modal-inner">
+          <div class="article-header">
+            <span class="article-tag">🎉 Company Milestone</span>
+            <span class="article-date"
+              ><i class="fas fa-calendar"></i> March 2025</span
+            >
+          </div>
+          <h2 class="article-title">
+            Techson Unicore is Officially CAC Registered
+          </h2>
+          <p class="article-lead">
+            After months of building, shipping, and believing in the vision,
+            Techson Unicore has taken a defining step: we are now officially
+            registered with the Corporate Affairs Commission (CAC) of Nigeria.
+          </p>
+          <div class="article-body">
+            <p>
+              This is not just a legal formality. For us, CAC registration
+              represents the formal beginning of something we have been working
+              toward since the idea of Techson Unicore was first conceived — a
+              credible, accountable, and ambitious technology company built to
+              serve African businesses at every level.
+            </p>
+            <p>
+              From our first client website to the four digital products
+              currently in development, every milestone has been a proof of
+              concept. This registration is the institutional backing that makes
+              those milestones mean even more.
+            </p>
+            <blockquote class="article-quote">
+              <i class="fas fa-quote-left"></i>
+              <p>
+                "We didn't register to say we exist on paper. We registered
+                because we intend to build something that lasts — a company that
+                Nigerian businesses can trust, grow with, and call a genuine
+                partner in their digital journeys."
+              </p>
+              <footer>
+                — Oduwole Oluwagbemiga Samuel, Founder & CEO, Techson Unicore
+              </footer>
+            </blockquote>
+            <p>
+              The registration also opens new doors: formal partnerships,
+              institutional clients, government contracts, and the ability to
+              operate at a scale that unregistered ventures cannot. It is, in
+              every sense, a foundation.
+            </p>
+            <p>
+              But more than the business opportunities it unlocks, the
+              registration is a statement of intent. Techson Unicore is here to
+              stay.
+            </p>
+            <blockquote class="article-quote">
+              <i class="fas fa-quote-left"></i>
+              <p>
+                "Every great company started somewhere. We chose to start with
+                integrity — with the right structures in place from day one.
+                That's the kind of company we are building."
+              </p>
+              <footer>
+                — Oduwole Oluwagbemiga Samuel, Founder & CEO, Techson Unicore
+              </footer>
+            </blockquote>
+            <p>
+              As we celebrate this milestone, we remain focused on what comes
+              next: delivering exceptional client work, shipping our first
+              product, and continuing to build the team and culture that will
+              define Techson Unicore for years to come.
+            </p>
+            <p class="article-closing">
+              Thank you to our clients, supporters, and everyone who believed in
+              this vision from the beginning. The best is very much still ahead.
+            </p>
+          </div>
+          <div class="article-cta">
+            <a href="#contact" class="btn btn-primary article-contact-link"
+              ><i class="fas fa-rocket"></i> Start a Project With Us</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="./script.js"></script>
   </body>
