@@ -11,24 +11,54 @@ window.addEventListener("scroll", () => {
   navbar.classList.toggle("scrolled", window.scrollY > 40);
 });
 
-/* === MOBILE MENU === */
+/* === MOBILE DRAWER === */
 const mobileToggle = document.getElementById("mobileToggle");
 const navLinks = document.getElementById("navLinks");
 
+// Create overlay and inject into body
+const navOverlay = document.createElement("div");
+navOverlay.className = "nav-overlay";
+document.body.appendChild(navOverlay);
+
+// Create close button and inject into drawer
+const navCloseBtn = document.createElement("button");
+navCloseBtn.className = "nav-close-btn";
+navCloseBtn.setAttribute("aria-label", "Close menu");
+navCloseBtn.innerHTML = "&times;";
+navLinks.prepend(navCloseBtn);
+
+function openDrawer() {
+  navLinks.classList.add("open");
+  navOverlay.classList.add("open");
+  mobileToggle.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeDrawer() {
+  navLinks.classList.remove("open");
+  navOverlay.classList.remove("open");
+  mobileToggle.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
 mobileToggle.addEventListener("click", () => {
-  mobileToggle.classList.toggle("open");
-  navLinks.classList.toggle("open");
-  document.body.style.overflow = navLinks.classList.contains("open")
-    ? "hidden"
-    : "";
+  navLinks.classList.contains("open") ? closeDrawer() : openDrawer();
 });
 
+// Close button inside drawer
+navCloseBtn.addEventListener("click", closeDrawer);
+
+// Clicking overlay closes drawer
+navOverlay.addEventListener("click", closeDrawer);
+
+// Clicking any nav link closes drawer
 navLinks.querySelectorAll(".nav-link, .btn-nav").forEach((link) => {
-  link.addEventListener("click", () => {
-    mobileToggle.classList.remove("open");
-    navLinks.classList.remove("open");
-    document.body.style.overflow = "";
-  });
+  link.addEventListener("click", closeDrawer);
+});
+
+// Escape key closes drawer
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeDrawer();
 });
 
 /* === ACTIVE NAV LINK === */
@@ -156,12 +186,10 @@ function showStatusModal(title, message) {
   document.body.style.overflow = "hidden";
 }
 
-if (modalClose) {
-  modalClose.addEventListener("click", () => {
-    statusModal.classList.remove("open");
-    document.body.style.overflow = "";
-  });
-}
+modalClose?.addEventListener("click", () => {
+  statusModal.classList.remove("open");
+  document.body.style.overflow = "";
+});
 statusModal?.addEventListener("click", (e) => {
   if (e.target === statusModal) {
     statusModal.classList.remove("open");
@@ -234,7 +262,7 @@ if (newsletterForm) {
   });
 }
 
-/* === FIX 5: ARTICLE MODAL (Read More) === */
+/* === ARTICLE MODAL (Read More) === */
 const articleModal = document.getElementById("articleModal");
 const articleModalClose = document.getElementById("articleModalClose");
 
@@ -255,18 +283,17 @@ articleModal?.addEventListener("click", (e) => {
   if (e.target === articleModal) closeArticleModal();
 });
 
-// Article CTA closes modal and scrolls to contact
 document
   .querySelector(".article-contact-link")
   ?.addEventListener("click", () => {
     closeArticleModal();
   });
 
-/* === ESC to close any modal === */
+/* === ESC closes any modal === */
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     statusModal?.classList.remove("open");
-    articleModal?.classList.remove("open");
+    closeArticleModal();
     document.body.style.overflow = "";
   }
 });
